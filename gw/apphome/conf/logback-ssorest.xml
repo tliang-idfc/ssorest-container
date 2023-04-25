@@ -1,0 +1,36 @@
+<included>
+  <!-- Define the context name - change if you have multiple deployments of SSORest, 
+       especially if they will share a common log file or other appender -->
+  <contextName>SSORestGateway</contextName>
+  
+  <!-- LogCategoryFilter - this must be present for LogCategories to work -->
+  <turboFilter class="com.idfconnect.ssorest.httpagent.logging.LogCategoryFilter"/>
+
+  <!-- Shutdown hook -->
+  <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+  
+  <!-- Console logger - this may be disabled if not needed -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%level][%logger{36}] - [%msg]%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Throttle some chatty packages    -->
+  <logger name="ch.qos.logback" level="WARN" />
+  <logger name="org.apache.catalina" level="WARN" />
+  <logger name="org.apache.jasper" level="WARN" />
+  <logger name="org.apache.tomcat.util" level="WARN" />
+  <logger name="javax.xml.bind" level="WARN" />
+  <logger name="org.glassfish.jersey.xml" level="WARN" />
+  <logger name="org.glassfish.jersey.core.spi.component" level="WARN" />
+  <logger name="org.glassfish.jersey.server.impl" level="WARN" />
+  <logger name="org.glassfish.jersey.server.impl.application" level="INFO" />
+  <logger name="org.reflections.Reflections" level="INFO" />
+  <logger name="io.swagger" level="WARN" />
+   
+  <!-- Define our root logger and log level -->
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+</included>
