@@ -1,0 +1,36 @@
+<included>
+  <!-- Define the context name - change if you have multiple deployments of SSORest, 
+       especially if they will share a common log file or other appender -->
+  <contextName>SSORest</contextName>
+  <turboFilter class="com.idfconnect.ssorest.common.logging.framework.LogCategoryFilter"/>
+  <!-- Console logger - this may be disabled if not needed -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{64} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Log to file - consider making this a rolling file appender -->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{64} - %msg%n</pattern>
+    </encoder>
+    <file>/var/log/ssorest-logback.log</file>
+  </appender>
+
+  <!-- Throttle some chatty packages -->
+  <logger name="org.apache.catalina" level="WARN" /> 
+  <logger name="org.apache.jasper" level="WARN" />
+  <logger name="javax.xml.bind" level="WARN" />
+  <logger name="com.sun.xml" level="WARN" />
+  <logger name="com.sun.jersey.core.spi.component" level="WARN" />
+  <logger name="com.sun.jersey.server.impl" level="WARN" />
+  <logger name="com.sun.jersey.server.impl.application" level="INFO" />
+  <logger name="org.reflections.Reflections" level="INFO" />
+  <logger name="org.apache.directory.ldap.client.api" level="INFO"/>
+  <!-- Define our root logger and log level -->
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </root>
+</included>

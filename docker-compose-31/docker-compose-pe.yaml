@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  policystore:
+    image: osixia/openldap:latest
+    networks:
+      - core-infra
+    ports:
+      - "1389:389"
+      - "1636:636"
+    volumes:
+      - ..\openldap\policy_store\data:/var/lib/ldap
+      - ..\openldap\policy_store\config:/etc/ldap/slapd.d
+      - ..\openldap\policy_store\env\openldap_env.yaml:/container/environment/01-custom/env.yaml
+    secrets:
+      - source: ldap_secret
+        target: /run/secrets/ldap_secret
+  pe:
+      image: idfconnect-docker.jfrog.io/ssorest-pe:3.1.16-test
+      container_name: pe
+      networks:
+        - core-infra
+      ports:
+        - "9080:9080"
+      depends_on:
+        - openldap
+      volumes:
+        - ..\pe\application-pe-docker.properties:/container/config/application-pe-docker.properties
+        - ..\h2:/var/tmp
+        - ..\certs\keystore.jks:/container/certs/keystore.jks
+networks:
+  core-infra:
+    external: true
+
+secrets:
+  ldap_secret:
+    external: true
+ 

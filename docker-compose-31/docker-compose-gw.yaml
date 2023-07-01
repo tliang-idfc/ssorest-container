@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  gw:
+    image: idfconnect-docker.jfrog.io/ssorest-gw:3.1.16
+    networks:
+      - core-infra
+    container_name: gw
+    ports:
+      - "8180:8180"
+    depends_on:
+      - pe
+    volumes:
+      - ..\gw\apphome\conf\:/opt/IDFC/SSORest/conf/
+      - ..\gw\apphome\license\:/opt/IDFC/SSORest/license/
+      - ..\certs\keystore.jks:/container/certs/keystore.jks
+      
+networks:
+  core-infra:
+    external: true

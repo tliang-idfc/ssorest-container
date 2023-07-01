@@ -1,9 +1,0 @@
-<Context path="/testweb">
-    <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPluginAnnotated.useFileConfigProvider" override="false" value="true"/>
-    <!--         <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPluginAnnotated.configFileName" override="false" value="filter_classpath.properties"/>-->
-    <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPluginAnnotated.configFileName" override="false" value="/usr/local/conf/filter.properties"/>
-    <Parameter name="userIdHeaderName" override="false" value="SM_USER"/>
-    <Parameter name="legacyHeaderName" override="false" value="true"/>
-    <Parameter name="sessionIdHeaderName" override="false" value="SM_SERVERSESSIONID"/>
-    <CookieProcessor className="org.apache.tomcat.util.http.LegacyCookieProcessor"/>
-</Context>

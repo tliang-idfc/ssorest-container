@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  policystore:
+    image: osixia/openldap:latest
+    networks:
+      - core-infra
+    ports:
+      - "389:389"
+      - "636:636"
+    volumes:
+      - ..\openldap\policy_store3\data:/var/lib/ldap
+      - ..\openldap\policy_store3\config:/etc/ldap/slapd.d
+      - ..\openldap\policy_store3\env\openldap_env.yaml:/container/environment/01-custom/env.yaml
+    secrets:
+      - source: ldap_secret
+        target: /run/secrets/ldap_secret
+networks:
+  core-infra:
+    external: true
+
+secrets:
+  ldap_secret:
+    external: true
+ 
