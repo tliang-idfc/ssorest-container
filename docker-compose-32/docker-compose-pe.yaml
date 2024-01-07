@@ -16,7 +16,7 @@ services:
       - source: ldap_secret
         target: /run/secrets/ldap_secret
   pe:
-      image: idfconnect-docker.jfrog.io/ssorest-pe:3.1.16-test
+      image: idfconnect-docker.jfrog.io/ssorest-pe:3.2.0-SS
       container_name: pe
       networks:
         - core-infra
@@ -25,7 +25,7 @@ services:
       depends_on:
         - openldap
       volumes:
-        - ..\pe\application-pe-docker.properties:/container/config/application-pe-docker.properties
+        - ..\pe\application-pe-docker-32.properties:/container/config/application-pe-docker.properties
         - ..\h2:/var/tmp
         - ..\certs\keystore.jks:/container/certs/keystore.jks
 networks:
