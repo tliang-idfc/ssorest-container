@@ -6,7 +6,7 @@ services:
     networks:
       - core-infra
     ports:
-      - "1389:389"
+      - "1389:1389"
       - "1636:636"
     volumes:
       - ..\openldap\user_store\data:/var/lib/ldap
