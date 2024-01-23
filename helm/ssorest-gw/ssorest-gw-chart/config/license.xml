@@ -1,0 +1,20 @@
+<licenses>
+        <license>
+                <product>IDF Connect HTTP Agent Framework</product>
+                <option>Core,WebAgent</option>
+                <version>2.0</version>
+                <notices>Copyright 2011-2023 IDF Connect, Inc.</notices>
+                <licensee>IDF Connect, Inc.</licensee>
+                <street>2207 Concord Pike. #359</street>
+                <city>Wilmington</city>
+                <state>DE</state>
+                <postalCode>19803</postalCode>
+                <country>USA</country>
+                <start>06.01.2024</start>
+                <expiration>31.12.2030</expiration>
+                <type>full</type>
+                <bindings></bindings>
+                <data></data>
+                <signature></signature>
+        </license>
+</licenses>

@@ -1,0 +1,20 @@
+replicaCount: 2
+
+image:
+  repository: tliangidfc/ssorest-pe
+  tag: "latest"
+  pullPolicy: Always
+imagePullSecrets:
+  - name: idfc-docker-pull-secret
+
+ingress:
+  enabled: true
+  hosts:
+    - host: ssorest-pe.k3s.demo
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+configMap:
+  useCustom: true
+  customName: ssorest-pe-custom-config
+

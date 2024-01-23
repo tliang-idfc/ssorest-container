@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ssorest-pe-chart.fullname" . }}-config
+data:
+  application.properties: |-
+    {{- .Files.Get .Values.configFiles.appPropertiesPath | nindent 4 }}
+  keystore.jks: |-
+    {{- .Files.Get .Values.configFiles.keystorePath | b64enc | nindent 4 }}

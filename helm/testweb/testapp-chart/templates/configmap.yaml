@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "testapp-chart.fullname" . }}-config
+data:
+  filter.properties: |-
+    {{- .Files.Get .Values.configFiles.filterPropertiesPath | nindent 4 }}
+  testweb.xml: |-
+    {{- .Files.Get .Values.configFiles.testwebXmlPath | nindent 4 }}

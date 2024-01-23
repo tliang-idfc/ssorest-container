@@ -1,0 +1,19 @@
+image:
+  repository: tliangidfc/ssorest-gw
+  tag: "latest"
+  # pullPolicy: Always
+imagePullSecrets:
+  - name: idfc-docker-pull-secret
+
+
+ingress:
+  enabled: true
+  hosts:
+    - host: ssorest-gw.k3s.demo
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+configMap:
+  useCustom: true
+  customName: ssorest-gw-custom-config
+

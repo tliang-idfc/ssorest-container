@@ -1,0 +1,20 @@
+image:
+  repository: tliangidfc/testweb
+  tag: "latest"
+  # Change to always if you want to re-pull the image
+  # pullPolicy: Always
+imagePullSecrets:
+  - name: idfc-docker-pull-secret
+
+
+ingress:
+  enabled: true
+  hosts:
+    - host: testweb.k3s.demo
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+configMap:
+  useCustom: true
+  customName: testapp-custom-config
+
